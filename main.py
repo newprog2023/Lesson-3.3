@@ -14,11 +14,16 @@ target_height = 100
 target_x = random.randint(0, SCREEN_WIDTH - target_width)
 target_y = random.randint(0, SCREEN_HEIGHT - target_height)
 color = (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
+hits = 0
+font = pygame.font.Font(None, 36)
 
 running = True
 while running:
     screen.fill(color)
     screen.blit(target_image, (target_x, target_y))
+    text = font.render(f'Попаданий: {hits}', True, (255, 255, 255))
+    text_rect = text.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT - 30))
+    screen.blit(text, text_rect)
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
@@ -27,6 +32,7 @@ while running:
             if target_x < mouse_x < target_x + target_width and target_y < mouse_y < target_y + target_height:
                 target_x = random.randint(0, SCREEN_WIDTH - target_width)
                 target_y = random.randint(0, SCREEN_HEIGHT - target_height)
+                hits += 1
 
     pygame.display.update()
 
