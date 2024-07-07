@@ -3,7 +3,7 @@ import pygame
 pygame.init()
 
 running = True
-while running
+while running:
     pass
 
 
