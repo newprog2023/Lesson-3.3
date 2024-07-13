@@ -21,7 +21,7 @@ font = pygame.font.Font(None, 36)
 
 # Переменные для отсчета времени
 start_time = time.time()
-time_limit = 5  # Время в секундах
+time_limit = 10  # Время в секундах
 
 def get_remaining_time():
     elapsed_time = time.time() - start_time
@@ -60,6 +60,7 @@ while running:
     if remaining_time == 0:
         end_text = font.render("Время вышло! Попробовать еще?", True, (255, 255, 255))
         end_text_rect = end_text.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2 - 50))
+        screen.blit(text, text_rect)
         screen.blit(end_text, end_text_rect)
         yes_button, no_button = draw_buttons()
         game_active = False
