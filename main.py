@@ -9,13 +9,13 @@ screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption('ПРОСТЕНЬКИЙ ТИР - попади в деву из Mortal Kombat')
 icon = pygame.image.load("img/icon.png")
 pygame.display.set_icon(icon)
-target_image = pygame.image.load('img/MortalKombatG100.png')
+target_image = pygame.image.load('img/MortalKombat100.png')
 target_width = 100
 target_height = 100
 target_x = random.randint(0, SCREEN_WIDTH - target_width)
 target_y = random.randint(0, SCREEN_HEIGHT - target_height)
 color = (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
-color = (150, 150, 150)
+#color = (150, 150, 150)
 hits = 0
 font = pygame.font.Font(None, 36)
 
@@ -60,7 +60,7 @@ while running:
     if remaining_time == 0:
         end_text = font.render("Время вышло! Попробовать еще?", True, (255, 255, 255))
         end_text_rect = end_text.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2 - 50))
-        screen.blit(text, text_rect)
+        screen.blit(font.render(f'Попаданий: {hits}', True, (255, 255, 255)), text_rect)
         screen.blit(end_text, end_text_rect)
         yes_button, no_button = draw_buttons()
         game_active = False
